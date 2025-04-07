@@ -4,34 +4,43 @@ const modal = document.getElementById('modalAlerta');
 const modalMensaje = document.getElementById('modalMensaje');
 const btnCerrarModal = document.getElementById('btnCerrarModal');
 
+// Comandos reconocidos para navegar entre secciones
 const comandosNavegacion = {
   'inicio': 'inicio',
   'acerca de': 'acerca',
   'contacto': 'contacto'
 };
 
+
+// Comandos reconocidos para interactuar con botones
 const comandosBotones = {
   'saludar': () => mostrarModal('¡Hola, usuario por voz!'),
   'mostrar información': () => mostrarModal('Esta es una app con control por voz.'),
   'enviar': () => mostrarModal('Mensaje enviado correctamente.')
 };
 
+// Funcion para mostrar la ventana emergente
 function mostrarModal(mensaje) {
   modalMensaje.textContent = mensaje;
   modal.style.display = 'flex';
 }
 
+// Funcion para cerrar la ventana emergente
 function cerrarModal() {
   modal.style.display = 'none';
 }
 
+// evento sobre el boton btnCerrarmodal
 btnCerrarModal.onclick = cerrarModal;
 
+
+// Inicializa el reconocimiento de voz
 const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 reconocimiento.lang = 'es-ES';
 reconocimiento.interimResults = false;
 reconocimiento.continuous = true;
 
+// Procesa el comando recibido
 reconocimiento.onresult = function(event) {
   const resultado = event.results[event.results.length - 1][0].transcript.toLowerCase().trim();
   estado.textContent = 'Comando reconocido: ' + resultado;
@@ -73,10 +82,12 @@ reconocimiento.onresult = function(event) {
   }
 };
 
+// Funcion para reconocer errores en el proceso de escucha de comandos 
 reconocimiento.onerror = function(event) {
   estado.textContent = 'Error: ' + event.error;
 };
 
+// funcion del boton para iniciar la escucha de comandos
 btn.onclick = () => {
   reconocimiento.start();
   estado.textContent = '🎧 Escuchando comandos...';
