@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control por Voz - Navegación Web</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <nav>
+        <h2>Asistente Web por Voz</h2>
+        <button id="vozBtn">🎤 Activar Escucha</button>
+        <p id="estado"></p>
+      </nav>
+    
+      <section id="inicio">
+        <h1>Inicio</h1>
+        <button class="accion" id="btnSaludo">Saludar</button>
+      </section>
+    
+      <section id="acerca">
+        <h1>Acerca de</h1>
+        <button class="accion" id="btnInfo">Mostrar Info</button>
+      </section>
+    
+      <section id="contacto">
+        <h1>Contacto</h1>
+        <button class="accion" id="btnEnviar">Enviar Mensaje</button>
+      </section>
+    
+      <!-- Modal personalizado -->
+      <div class="modal" id="modalAlerta">
+        <div class="modal-content">
+          <p id="modalMensaje">Mensaje dinámico</p>
+          <button id="btnCerrarModal">Aceptar</button>
+        </div>
+      </div>
+      
+  <script src="app.js"></script>
+</body>
+</html>
