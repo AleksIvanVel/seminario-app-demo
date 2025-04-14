@@ -87,10 +87,15 @@ reconocimiento.onerror = function(event) {
   estado.textContent = 'Error: ' + event.error;
 };
 
-// funcion del boton para iniciar la escucha de comandos
-btn.onclick = () => {
+// funcion para iniciar la escucha de comandos
+function iniciarReconocimiento() {
   reconocimiento.start();
   estado.textContent = '🎧 Escuchando comandos...';
   btn.disabled = true;
   btn.textContent = '🎧 Escuchando...';
+}
+
+// Iniciar automáticamente al cargar
+window.onload = () => {
+  iniciarReconocimiento();
 };
